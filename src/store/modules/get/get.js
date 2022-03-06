@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { topRated, trending, popular, nowPlaying, upcoming, getDetail } from "../../api/get/get"
+import { topRated, trending, popular, nowPlaying, upcoming, getDetail, search } from "../../api/get/get"
 
 const state = {
     data: []
@@ -15,6 +15,22 @@ const actions = {
     topRated({ commit, state }, payload) {
         return new Promise((resolve, reject) => {
             topRated(payload)
+                .then(response => {
+                    if (!response) {
+                        reject("Gagal mengambil data")
+                    } else {
+                        resolve(response)
+                    }
+                })
+                .catch(error => {
+                    console.log("read(): error: " + error)
+                    resolve(error)
+                })
+        })
+    },
+    search({ commit, state }, payload) {
+        return new Promise((resolve, reject) => {
+            search(payload)
                 .then(response => {
                     if (!response) {
                         reject("Gagal mengambil data")

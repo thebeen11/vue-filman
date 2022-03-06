@@ -2,16 +2,16 @@
   <div class="detail-container section__padding gradient__bg">
     <div class="detail-poster">
       <div class="poster-container">
-          <div class="detail-released">
+        <div class="detail-released">
           <h1>
-              {{detailData.release_date | formatDate}}
+            {{ detailData.release_date | formatDate }}
           </h1>
           <div></div>
           <h5>
-              {{detailData.release_date | formatMonthYear}}
+            {{ detailData.release_date | formatMonthYear }}
           </h5>
-      </div>
-      <img :src="detailData.poster_path" :alt="detailData.original_title" />
+        </div>
+        <img :src="detailData.poster_path" :alt="detailData.original_title" />
       </div>
     </div>
     <div class="detail-description">
@@ -24,17 +24,18 @@
           <b-icon class="star" icon="star-fill" variant="warning"></b-icon>
           <p>{{ detailData.vote_average }}</p>
         </div>
-       
       </div>
-       <div class="genre">
-            <p v-for="(item, i) in detailData.genres" :key="item.id">
-               {{ `${item.name}` + `${ i !== detailData.genres.length -1 ? '/' : ''}`}}
-            </p>
-        </div>
+      <div class="genre">
+        <p v-for="(item, i) in detailData.genres" :key="item.id">
+          {{
+            `${item.name}` + `${i !== detailData.genres.length - 1 ? "/" : ""}`
+          }}
+        </p>
+      </div>
       <div class="overview">
-          <p>
-              {{detailData.overview}}
-          </p>
+        <p>
+          {{ detailData.overview }}
+        </p>
       </div>
     </div>
   </div>
@@ -76,21 +77,21 @@ export default {
 <style lang="scss" scoped>
 .detail-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   color: #fff;
   .detail-poster {
     flex: 1;
     display: flex;
     justify-content: center;
-    
-    .poster-container{
-        position: relative;
-        max-width: 400px;
-    
-    img {
+
+    .poster-container {
+      position: relative;
       max-width: 400px;
-    }
-    .detail-released{
+
+      img {
+        max-width: 400px;
+      }
+      .detail-released {
         z-index: 2;
         position: absolute;
         background: #ff4820;
@@ -103,32 +104,30 @@ export default {
         flex-direction: column;
         align-items: center;
         padding: 0.6rem;
-        h1{
-            font-weight: 800;
-            font-size: 32px;
+        h1 {
+          font-weight: 800;
+          font-size: 32px;
         }
-        div{
-            background: #fff;
-            width: 30px;
-            height: 5px;
-            margin-bottom: 0.4rem;
+        div {
+          background: #fff;
+          width: 30px;
+          height: 5px;
+          margin-bottom: 0.4rem;
         }
-        h5{
-            font-size: 14px;
+        h5 {
+          font-size: 14px;
         }
-
+      }
     }
-  }
   }
   .detail-description {
     flex: 1;
-    
+    margin: 0 2rem;
     .sub-detail {
       display: flex;
-      
+
       align-items: baseline;
       .views {
-        
         margin: 0.3rem 0;
         color: #fff;
         padding: 7px;
@@ -155,19 +154,76 @@ export default {
           padding: 2px;
         }
       }
-      
     }
-    .genre{
-          display: flex;
-          margin: 1rem 0;
-         p{
-             color: grey;
-         }
+    .genre {
+      display: flex;
+      margin: 1rem 0;
+      p {
+        color: grey;
       }
-    .overview{
-        justify-content: space-around;
-        display: block;
-        max-width: 600px;
+    }
+    .overview {
+      justify-content: space-around;
+      display: block;
+      max-width: 600px;
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  img {
+    width: 300px;
+  }
+  .detail-container {
+  .poster-container{
+  .detail-released {
+    width: 70px;
+    height: 100px;
+    h1 {
+      font-weight: 600;
+      font-size: 24px;
+    }
+    div {
+      background: #fff;
+      width: 20px;
+      height: 3px;
+      margin-bottom: 0.2rem;
+    }
+    h5 {
+      font-size: 12px;
+    }
+  }
+  }}
+}
+@media screen and (max-width: 800px) {
+  .detail-container {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    padding: 0;
+    .detail-poster {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .detail-container {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    padding: 0;
+    img {
+      width: 100%;
+    }
+
+    .detail-poster {
+      margin-bottom: 2rem;
+      .poster-container{
+      .detail-released {
+        bottom: -1rem;
+        right: 2rem;
+      }
+      }
     }
   }
 }

@@ -46,3 +46,10 @@ export function getDetail(params) {
     })
 }
 
+export function search(params) {
+    return request({
+        url: `${process.env.VUE_APP_BASE_API}/search/movie`,
+        method: "GET",
+        params: params
+    })
+}

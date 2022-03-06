@@ -8,10 +8,12 @@
       </div>
     
       <list-layout/>
+      <Footer/>
   </div>
 </template>
 
 <script>
+import Footer from './components/Footer/Footer.vue'
 import Header from './components/Header/Header.vue'
 import ListLayout from './components/Layout/ListLayout.vue'
 import Navbar from './components/Navbar/Navbar.vue'
@@ -19,7 +21,8 @@ export default {
   components:{
     Navbar,
     ListLayout,
-    Header
+    Header,
+    Footer
   },
   data() {
     return{
