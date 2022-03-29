@@ -1,6 +1,5 @@
 <template>
   <div>
-      
     <div class="search-container">
       <b-form-input
         v-model="text"

@@ -6,7 +6,6 @@
       <div v-if="routeName == 'Trending'">
         <Header/>
       </div>
-    
       <list-layout/>
       <Footer/>
   </div>
